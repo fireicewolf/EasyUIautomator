@@ -46,7 +46,7 @@ public class BasicEvent {
     }
 
     //Time between every action
-    public static void waitingTime(int sleep) {
+    public static void wait(int sleep) {
         try {
             Thread.sleep(sleep);
         } catch (InterruptedException e) {

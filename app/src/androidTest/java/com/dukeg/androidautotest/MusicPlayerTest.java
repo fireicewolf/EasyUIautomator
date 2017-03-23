@@ -26,6 +26,6 @@ public class MusicPlayerTest {
     @Test
     public void musicplayerTest() {
         basic.launch("com.android.music",5000);
-        basic.waitingTime(5000);
+        basic.wait(5000);
     }
 }
