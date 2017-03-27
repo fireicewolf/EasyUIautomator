@@ -9,7 +9,7 @@ public class CheckEvent {
     private static UiDevice mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
 
     //Check Screen on or off
-    public static String checkScreenStatues() throws RemoteException {
-        return mDevice.isScreenOn() ? "on" : "off";
+    public static boolean checkScreenOn() throws RemoteException {
+        return mDevice.isScreenOn();
     }
 }

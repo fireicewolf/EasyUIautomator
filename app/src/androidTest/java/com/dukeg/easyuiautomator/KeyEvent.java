@@ -1,22 +1,25 @@
+/**
+ * Created by John Yu on 2017/3/8.
+ * To make uiautomator easy bo be used, redefined some commands for it.
+ */
+
 package com.dukeg.easyuiautomator;
 
 import android.os.SystemClock;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.uiautomator.Configurator;
+import android.support.test.uiautomator.InstrumentationUiAutomatorBridge;
+import android.support.test.uiautomator.Tracer;
 import android.support.test.uiautomator.UiDevice;
 import android.view.InputDevice;
 import android.view.KeyCharacterMap;
+import android.view.accessibility.AccessibilityEvent;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class KeyEvent {
-
-    /**
-     * Created by John Yu on 2017/3/8.
-     * To make uiautomator easy bo be used, redefined some commands for it.
-     */
-
     // Initialize UiDevice instance
     private static UiDevice mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
 
@@ -60,6 +63,20 @@ public class KeyEvent {
         return false;
     }
 
+    //Press Home key
+    public static boolean pressHome() {
+        return mDevice.pressHome();
+    }
+
+    public static boolean pressMenu() {
+        return mDevice.pressMenu();
+    }
+
+    public static boolean pressBack() {
+        return mDevice.pressBack();
+    }
+
+    /**
     public enum keyCode {
         power, volumeUp, volumeDown, volumeMute, home, back, menu, recentApps
     }
@@ -134,4 +151,5 @@ public class KeyEvent {
                 break;
         }
     }
+    */
 }

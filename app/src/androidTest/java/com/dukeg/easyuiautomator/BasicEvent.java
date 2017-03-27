@@ -8,7 +8,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.Until;
-
+import android.os.SystemClock;
 
 public class BasicEvent {
     private static UiDevice mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
@@ -47,10 +47,13 @@ public class BasicEvent {
 
     //Time between every action
     public static void wait(int sleep) {
+        SystemClock.sleep(sleep);
+        /**
         try {
             Thread.sleep(sleep);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        */
     }
 }
