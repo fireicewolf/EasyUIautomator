@@ -9,15 +9,29 @@ import android.support.test.uiautomator.Until;
 public class CheckEvent {
     private UiDevice mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
 
-    //Check screen on(return ture) or off(return false)
+    //Check screen on(return true) or off(return false)
     public boolean isScreenOn() throws RemoteException {
         return mDevice.isScreenOn();
     }
 
-    //Check whether the object is exsit
-    public boolean isObjectExsitByRes(String resourceID) {
+    //Check the object is exist or not by resource ID
+    public boolean isObjectExistByRes(String resourceID, long timeout) {
         //UiObject testObject = new UiObject(new UiSelector().resourceId(resourceID));
-        //testObject.exsit();
-        return mDevice.wait(Until.hasObject((By.res(resourceID))), 5000);
+        //return testObject.exists();
+        return mDevice.wait(Until.hasObject((By.res(resourceID))), timeout);
+    }
+
+    //Check the object is exist or not by text
+    public boolean isObjectExistByText(String text, long timeout) {
+        //UiObject testObject = new UiObject(new UiSelector().text(text));
+        //return testObject.exists();
+        return mDevice.wait(Until.hasObject((By.text(text))), timeout);
+    }
+
+    //Check the object is exist or not by description
+    public boolean isObjectExistByDesc(String desc, long timeout) {
+        //UiObject testObject = new UiObject(new UiSelector().description(desc));
+        //return testObject.exists();
+        return mDevice.wait(Until.hasObject((By.desc(desc))), timeout);
     }
 }

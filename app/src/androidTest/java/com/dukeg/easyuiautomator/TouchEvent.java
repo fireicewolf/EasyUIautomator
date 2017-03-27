@@ -1,7 +1,10 @@
 package com.dukeg.easyuiautomator;
 
 import android.support.test.InstrumentationRegistry;
-import android.support.test.uiautomator.*;
+import android.support.test.uiautomator.By;
+import android.support.test.uiautomator.Configurator;
+import android.support.test.uiautomator.UiDevice;
+import android.support.test.uiautomator.Until;
 
 public class TouchEvent {
     private UiDevice mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
@@ -52,7 +55,7 @@ public class TouchEvent {
     //Scroll left screen
     public boolean scrollLeft() {
         return mDevice.swipe(mDevice.getDisplayWidth() * 3 / 4, mDevice.getDisplayHeight() / 2,
-                mDevice.getDisplayWidth() * 1 / 4, mDevice.getDisplayHeight() / 2, 100);
+                mDevice.getDisplayWidth() / 4, mDevice.getDisplayHeight() / 2, 100);
     }
 
     //Scroll right screen
@@ -74,6 +77,21 @@ public class TouchEvent {
     //Click once element by Object Text
     public void clickByObjectDesc(String desc, long timeout) {
         mDevice.wait(Until.findObject(By.desc(desc)), timeout).click();
+    }
+
+    //Click once element by Object Resource ID
+    public void longClickByObjectResourceID(String resourceID, long timeout) {
+        mDevice.wait(Until.findObject(By.res(resourceID)), timeout).longClick();
+    }
+
+    //Click once element by Object Text
+    public void longClickByObjectText(String text, long timeout) {
+        mDevice.wait(Until.findObject(By.text(text)), timeout).longClick();
+    }
+
+    //Click once element by Object Text
+    public void longClickByObjectDesc(String desc, long timeout) {
+        mDevice.wait(Until.findObject(By.desc(desc)), timeout).longClick();
     }
 
 }

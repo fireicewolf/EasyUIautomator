@@ -16,7 +16,7 @@ public class KeyEvent {
     private UiDevice mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
 
     //Long press key by keycode
-    private boolean longPressKeyCode(int keyCode, long PressTime) {
+    private boolean longPressKeyCode(int keyCode, long pressTime) {
         try {
             Field mUiAutomationBridge = Class.forName("android.support.test.uiautomator.UiDevice").getDeclaredField("mUiAutomationBridge");
             mUiAutomationBridge.setAccessible(true);
@@ -31,7 +31,7 @@ public class KeyEvent {
                     InputDevice.SOURCE_KEYBOARD);
 
             if ((Boolean) injectInputEvent.invoke(bridgeObj, downEvent, true)) {
-                SystemClock.sleep(PressTime);
+                SystemClock.sleep(pressTime);
                 android.view.KeyEvent upEvent = new android.view.KeyEvent(eventTime, eventTime,
                         android.view.KeyEvent.ACTION_UP, keyCode, 0, 0,
                         KeyCharacterMap.VIRTUAL_KEYBOARD, 0, 0,
@@ -46,63 +46,53 @@ public class KeyEvent {
         return false;
     }
 
-    //Press Home key
+    //Press home key
     public boolean pressHome() {
         return mDevice.pressHome();
     }
 
-    //Press Menu key
+    //Press menu key
     public boolean pressMenu() {
         return mDevice.pressMenu();
     }
 
-    //Press Back key
+    //Press back key
     public boolean pressBack() {
         return mDevice.pressBack();
     }
 
-    //Press RecentApps key
-    public boolean pressRececntApps() throws RemoteException {
+    //Press recentApps key
+    public boolean pressRecentApps() throws RemoteException {
         return mDevice.pressRecentApps();
     }
 
-    //Press Volume Up key
+    //Press volume up key
     public boolean pressVolumeUp() {
         return mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_UP);
     }
 
-    //Press Volume Down key
+    //Press volume down key
     public boolean pressVolumeDown() {
         return mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_DOWN);
     }
 
-    //Press Volume Mute key
+    //Press volume mute key
     public boolean pressVolumeMute() {
         return mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_MUTE);
     }
 
-    //Press Power Key
+    //Press power key
     public boolean pressPower() {
         return mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_MUTE);
     }
 
     //Long press power key
-    public boolean longpressPower(long pressTime) {
+    public boolean longPressPower(long pressTime) {
         return longPressKeyCode(android.view.KeyEvent.KEYCODE_POWER, pressTime);
     }
 
     //Long press home key
-    public boolean longpressHome(long pressTime) {
+    public boolean longPressHome(long pressTime) {
         return longPressKeyCode(android.view.KeyEvent.KEYCODE_HOME, pressTime);
-    }
-
-    //Screnn On(Doing nothint if screnn is already on)
-    public void screenOn() throws RemoteException {
-        mDevice.wakeUp();
-    }
-
-    //Screen Off(Doing nothint if screnn is already on)
-    public void screenOff() throws RemoteException {
-        mDevice.sleep();
     }
 }
