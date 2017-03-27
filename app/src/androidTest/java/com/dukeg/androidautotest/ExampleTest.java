@@ -27,18 +27,19 @@ public class ExampleTest {
         for (int i = 0; i < 10; i++) {
             basic.launch("com.android.music", 5000);
             basic.wait(5000);
-            if (check.isObjectExsitByRes("com.android.music:id/playbar_play")) {
+            //if (check.isObjectExsitByRes("com.android.music:id/playbar_play")) {
                 touch.clickByObjectResourceID("com.android.music:id/playbar_play", 5000);
                 basic.wait(30000);
                 touch.clickByObjectResourceID("com.android.music:id/playbar_play", 5000);
                 basic.wait(3000);
                 key.pressBack();
-            } else {
+            //} else {
                 key.pressHome();
-            }
+            //}
             basic.wait(3000);
             key.pressRececntApps();
             touch.click(540, 1580);
+            basic.wait(3000);
         }
     }
 

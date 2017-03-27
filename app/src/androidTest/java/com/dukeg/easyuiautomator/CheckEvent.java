@@ -4,6 +4,7 @@ import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
+import android.support.test.uiautomator.Until;
 
 public class CheckEvent {
     private UiDevice mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
@@ -17,6 +18,6 @@ public class CheckEvent {
     public boolean isObjectExsitByRes(String resourceID) {
         //UiObject testObject = new UiObject(new UiSelector().resourceId(resourceID));
         //testObject.exsit();
-        return mDevice.hasObject((By.res(resourceID)));
+        return mDevice.wait(Until.hasObject((By.res(resourceID))), 5000);
     }
 }
