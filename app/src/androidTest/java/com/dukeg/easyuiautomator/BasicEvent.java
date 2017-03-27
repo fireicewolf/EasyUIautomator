@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.os.SystemClock;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.Until;
-import android.os.SystemClock;
 
-public class BasicEvent {
+public class BasicEvent implements Searchable {
     private static UiDevice mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
 
     //Get Apps' package name in Launcher
@@ -48,12 +48,6 @@ public class BasicEvent {
     //Time between every action
     public static void wait(int sleep) {
         SystemClock.sleep(sleep);
-        /**
-        try {
-            Thread.sleep(sleep);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        */
     }
 }
+

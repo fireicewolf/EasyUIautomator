@@ -1,19 +1,11 @@
-/**
- * Created by John Yu on 2017/3/8.
- * To make uiautomator easy bo be used, redefined some commands for it.
- */
-
 package com.dukeg.easyuiautomator;
 
+import android.os.RemoteException;
 import android.os.SystemClock;
 import android.support.test.InstrumentationRegistry;
-import android.support.test.uiautomator.Configurator;
-import android.support.test.uiautomator.InstrumentationUiAutomatorBridge;
-import android.support.test.uiautomator.Tracer;
 import android.support.test.uiautomator.UiDevice;
 import android.view.InputDevice;
 import android.view.KeyCharacterMap;
-import android.view.accessibility.AccessibilityEvent;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -21,10 +13,10 @@ import java.lang.reflect.Method;
 
 public class KeyEvent {
     // Initialize UiDevice instance
-    private static UiDevice mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+    private UiDevice mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
 
     //Long press key by keycode
-    private static boolean longPressKeyCode(int keyCode, long PressTime) {
+    private boolean longPressKeyCode(int keyCode, long PressTime) {
         try {
             Field mUiAutomationBridge = Class.forName("android.support.test.uiautomator.UiDevice").getDeclaredField("mUiAutomationBridge");
             mUiAutomationBridge.setAccessible(true);
@@ -48,108 +40,69 @@ public class KeyEvent {
                     return true;
                 }
             }
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (NoSuchMethodException | ClassNotFoundException | IllegalAccessException | NoSuchFieldException | InvocationTargetException e) {
             e.printStackTrace();
         }
-
         return false;
     }
 
     //Press Home key
-    public static boolean pressHome() {
+    public boolean pressHome() {
         return mDevice.pressHome();
     }
 
-    public static boolean pressMenu() {
+    //Press Menu key
+    public boolean pressMenu() {
         return mDevice.pressMenu();
     }
 
-    public static boolean pressBack() {
+    //Press Back key
+    public boolean pressBack() {
         return mDevice.pressBack();
     }
 
-    /**
-    public enum keyCode {
-        power, volumeUp, volumeDown, volumeMute, home, back, menu, recentApps
+    //Press RecentApps key
+    public boolean pressRececntApps() throws RemoteException {
+        return mDevice.pressRecentApps();
     }
 
-    public enum pressType {
-        shortPress, longPress
+    //Press Volume Up key
+    public boolean pressVolumeUp() {
+        return mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_UP);
     }
 
-    //
-    public static void pressKey(keyCode keyCode, pressType pressType, long PressTime) {
-        switch (pressType) {
-            case shortPress:
-                switch (keyCode) {
-                    case power:
-                        mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_POWER);
-                        break;
-                    case volumeUp:
-                        mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_UP);
-                        break;
-                    case volumeDown:
-                        mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_DOWN);
-                        break;
-                    case volumeMute:
-                        mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_MUTE);
-                        break;
-                    case home:
-                        mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_HOME);
-                        break;
-                    case back:
-                        mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_BACK);
-                        break;
-                    case menu:
-                        mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_MENU);
-                        break;
-                    case recentApps:
-                        mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_APP_SWITCH);
-                        //mDevice.pressRecentApps();
-                        break;
-                    default:
-                        break;
-                }
-            case longPress:
-                switch (keyCode) {
-                    case power:
-                        longPressKeyCode(android.view.KeyEvent.KEYCODE_POWER, PressTime);
-                        break;
-                    case volumeUp:
-                        longPressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_UP, PressTime);
-                        break;
-                    case volumeDown:
-                        longPressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_DOWN, PressTime);
-                        break;
-                    case volumeMute:
-                        longPressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_MUTE, PressTime);
-                        break;
-                    case home:
-                        longPressKeyCode(android.view.KeyEvent.KEYCODE_HOME, PressTime);
-                        break;
-                    case back:
-                        longPressKeyCode(android.view.KeyEvent.KEYCODE_BACK, PressTime);
-                        break;
-                    case menu:
-                        longPressKeyCode(android.view.KeyEvent.KEYCODE_MENU, PressTime);
-                        break;
-                    case recentApps:
-                        longPressKeyCode(android.view.KeyEvent.KEYCODE_APP_SWITCH, PressTime);
-                        break;
-                    default:
-                        break;
-                }
-            default:
-                break;
-        }
+    //Press Volume Down key
+    public boolean pressVolumeDown() {
+        return mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_DOWN);
     }
-    */
+
+    //Press Volume Mute key
+    public boolean pressVolumeMute() {
+        return mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_MUTE);
+    }
+
+    //Press Power Key
+    public boolean pressPower() {
+        return mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_MUTE);
+    }
+
+    //Long press power key
+    public boolean longpressPower(long pressTime) {
+        return longPressKeyCode(android.view.KeyEvent.KEYCODE_POWER, pressTime);
+    }
+
+    //Long press home key
+    public boolean longpressHome(long pressTime) {
+        return longPressKeyCode(android.view.KeyEvent.KEYCODE_HOME, pressTime);
+    }
+
+    //Screnn On(Doing nothint if screnn is already on)
+    public void screenOn() throws RemoteException {
+        mDevice.wakeUp();
+    }
+
+    //Screen Off(Doing nothint if screnn is already on)
+    public void screenOff() throws RemoteException {
+        mDevice.sleep();
+    }
 }
