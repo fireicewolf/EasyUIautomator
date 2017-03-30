@@ -83,7 +83,7 @@ public class KeyEvent {
 
     //Press power key
     public boolean pressPower() {
-        return mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_VOLUME_MUTE);
+        return mDevice.pressKeyCode(android.view.KeyEvent.KEYCODE_POWER);
     }
 
     //Long press power key

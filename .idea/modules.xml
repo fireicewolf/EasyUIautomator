@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EasyUIautomator.iml" filepath="$PROJECT_DIR$/EasyUIautomator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/andorideasyuiautomator/andorideasyuiautomator.iml" filepath="$PROJECT_DIR$/andorideasyuiautomator/andorideasyuiautomator.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
