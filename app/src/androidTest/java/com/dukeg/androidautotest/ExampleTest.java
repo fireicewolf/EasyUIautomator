@@ -25,6 +25,12 @@ public class ExampleTest {
     @Before
 
     @Test
+    public void takeScreenshotTest() {
+        basic.wait(1000);
+        basic.takeScreenshot();
+        basic.wait(1000);
+    }
+    /**
     public void musicplayerTest() throws RemoteException {
         for (int i = 0; i < 10; i++) {
             basic.launch("com.android.music", 5000);
@@ -45,4 +51,5 @@ public class ExampleTest {
             basic.wait(3000);
         }
     }
+    */
 }

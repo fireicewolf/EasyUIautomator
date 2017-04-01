@@ -1,15 +1,22 @@
 package com.dukeg.easyuiautomator;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.os.Environment;
 import android.os.RemoteException;
 import android.os.SystemClock;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.Until;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class BasicEvent {
     private UiDevice mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
@@ -25,6 +32,26 @@ public class BasicEvent {
         ResolveInfo resolveInfo = pm.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
         return resolveInfo.activityInfo.packageName;
     }
+    //Get current app's name
+    private String getApplicationName() {
+        PackageManager packageManager = null;
+        ApplicationInfo applicationInfo = null;
+        try {
+            packageManager = InstrumentationRegistry.getContext().getPackageManager();
+            applicationInfo = packageManager.getApplicationInfo(mDevice.getCurrentPackageName(), 0);
+        }
+        catch (PackageManager.NameNotFoundException e) {
+            applicationInfo = null;
+        }
+        String applicationName = (String) packageManager.getApplicationLabel(applicationInfo);
+        return applicationName;
+    }
+
+    //Get current time
+    @SuppressLint("SimpleDateFormat")
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+    Date curDate = new Date(System.currentTimeMillis());
+    String currentDatetime = formatter.format(curDate);
 
     //Open an app by its package name
     public void launch(String packageName, int timeout) {
@@ -70,6 +97,14 @@ public class BasicEvent {
     //Screen off(Doing nothing if screen is already on)
     public void screenOff() throws RemoteException {
         mDevice.sleep();
+    }
+
+    //Take a screenshot
+    public boolean takeScreenshot() {
+        File fileDir = new File("/sdcard/EasyUIautomator/");
+        fileDir.mkdir();
+        return mDevice.takeScreenshot(new File(Environment.getExternalStorageDirectory().getPath()
+                +"/EasyUIautomator/"+getApplicationName()+" "+mDevice.getCurrentPackageName()+" "+currentDatetime+".png"));
     }
 
 }
