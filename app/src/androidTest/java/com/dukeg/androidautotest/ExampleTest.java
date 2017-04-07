@@ -29,6 +29,7 @@ public class ExampleTest {
         basic.wait(1000);
         basic.takeScreenshot();
         basic.wait(1000);
+
     }
     /**
     public void musicplayerTest() throws RemoteException {

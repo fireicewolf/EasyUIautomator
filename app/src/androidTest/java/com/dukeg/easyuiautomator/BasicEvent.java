@@ -101,7 +101,7 @@ public class BasicEvent {
 
     //Take a screenshot
     public boolean takeScreenshot() {
-        File fileDir = new File("/sdcard/EasyUIautomator/");
+        File fileDir = new File(Environment.getExternalStorageDirectory().getPath()+"/EasyUIautomator/");
         fileDir.mkdir();
         return mDevice.takeScreenshot(new File(Environment.getExternalStorageDirectory().getPath()
                 +"/EasyUIautomator/"+getApplicationName()+" "+mDevice.getCurrentPackageName()+" "+currentDatetime+".png"));
