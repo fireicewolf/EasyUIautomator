@@ -1,8 +1,22 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'DukeG'
+            keyPassword 'YQhk1123581321,.'
+            storeFile file('D:/AndroidStudioProjects/JohnYu.jks')
+            storePassword 'YQhk1123581321,.'
+        }
+        Debug {
+            keyAlias 'DukeG'
+            keyPassword 'YQhk1123581321,.'
+            storeFile file('D:/AndroidStudioProjects/JohnYu.jks')
+            storePassword 'YQhk1123581321,.'
+        }
+    }
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "com.dukeg.androidautotest"
         minSdkVersion 19
@@ -15,18 +29,35 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.Debug
+        }
+    }
+    signingConfigs {
+        debug {
+            keyAlias 'DukeG'
+            keyPassword 'YQhk1123581321,.'
+            storeFile file('D:/AndroidStudioProjects/JohnYu.jks')
+            storePassword 'YQhk1123581321,.'
+        }
+        release {
+            keyAlias 'DukeG'
+            keyPassword 'YQhk1123581321,.'
+            storeFile file('D:/AndroidStudioProjects/JohnYu.jks')
+            storePassword 'YQhk1123581321,.'
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
-
     compile 'com.android.support.test:runner:0.5'
     compile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
 }
