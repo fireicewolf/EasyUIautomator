@@ -26,8 +26,58 @@ public class ScriptTest {
 
     @Test
     public void wifiOnOff() {
+//        setting.wifiON();
+//        basic.wait(2000);
+//        basic.takeScreenshot();
+//        basic.wait(2000);
+//        setting.wifiOFF();
+//        basic.wait(2000);
+//        basic.takeScreenshot();
+//        basic.wait(2000);
+//        setting.bluetoothON();
+//        basic.wait(2000);
+//        basic.takeScreenshot();
+//        basic.wait(2000);
+//        setting.bluetoothOFF();
+//        basic.wait(2000);
+//        basic.takeScreenshot();
+//        basic.wait(2000);
+//        setting.locationON_MODE_HIGH_ACCURACY();
+//        basic.wait(2000);
+//        basic.takeScreenshot();
+//        basic.wait(2000);
+//        setting.locationOFF();
+//        basic.wait(2000);
+//        basic.takeScreenshot();
+//        basic.wait(2000);
+//
+//        setting.locationON_MODE_BATTERY_SAVING();
+//        basic.wait(2000);
+//        basic.takeScreenshot();
+//        basic.wait(2000);
+//        setting.locationOFF();
+//        basic.wait(2000);
+//        basic.takeScreenshot();
+//        basic.wait(2000);
+//
+//        setting.locationON_MODE_DEVICE_ONLY();
+//        basic.wait(2000);
+//        basic.takeScreenshot();
+//        basic.wait(2000);
+//        setting.locationOFF();
+//        basic.wait(2000);
+//        basic.takeScreenshot();
+//        basic.wait(2000);
+
+        setting.mobileDataON();
+        basic.wait(2000);
+        basic.takeScreenshot("test");
+        basic.wait(2000);
         basic.takeScreenshot();
-        basic.wait(5000);
-        basic.takeScreenshot();
+//        setting.mobileDataOFF();
+//        basic.wait(2000);
+//        basic.takeScreenshot();
+//        basic.wait(2000);
+
     }
 }

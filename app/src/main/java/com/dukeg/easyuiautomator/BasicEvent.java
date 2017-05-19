@@ -94,18 +94,29 @@ public class BasicEvent {
         mDevice.sleep();
     }
 
-    //Take a screenshot
-    public boolean takeScreenshot() {
+    //Take a screenshot with name
+    public boolean takeScreenshot(String name) {
         //Get current time
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd-HH_mm_ss");
         Date curDate = new Date(System.currentTimeMillis());
         String currentDatetime = formatter.format(curDate);
 
-        File fileDir = new File(Environment.getExternalStorageDirectory().getPath() + "/EasyUIautomator/");
-        fileDir.mkdir();
+        File fileDir = new File(Environment.getExternalStorageDirectory().getPath() +
+                "/EasyUIautomator/");
+
+        if (!fileDir.exists()) {
+            fileDir.mkdir();
+        }
+
         return mDevice.takeScreenshot(new File(Environment.getExternalStorageDirectory().getPath()
-                + "/EasyUIautomator/" + getApplicationName() + " " + mDevice.getCurrentPackageName() + " " + currentDatetime + ".png"));
+                + "/EasyUIautomator/" + name + " " + currentDatetime + ".png"));
+    }
+
+    //Take a screenshot (named with current app name + package name)
+    public boolean takeScreenshot() {
+        String name = getApplicationName() + " " + mDevice.getCurrentPackageName();
+        return takeScreenshot(name);
     }
 
 }
