@@ -85,13 +85,21 @@ public class BasicEvent {
 
 
     //Screen on(Doing nothing if screen is already on)
-    public void screenOn() throws RemoteException {
-        mDevice.wakeUp();
+    public void screenOn() {
+        try {
+            mDevice.wakeUp();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     //Screen off(Doing nothing if screen is already on)
-    public void screenOff() throws RemoteException {
-        mDevice.sleep();
+    public void screenOff() {
+        try {
+            mDevice.sleep();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     //Take a screenshot with name

@@ -10,8 +10,13 @@ public class CheckEvent {
     private UiDevice mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
 
     //Check screen on(return true) or off(return false)
-    public boolean isScreenOn() throws RemoteException {
-        return mDevice.isScreenOn();
+    public boolean isScreenOn() {
+        try {
+            return mDevice.isScreenOn();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     //Check the object is exist or not by resource ID

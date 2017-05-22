@@ -62,8 +62,13 @@ public class KeyEvent {
     }
 
     //Press recentApps key
-    public boolean pressRecentApps() throws RemoteException {
-        return mDevice.pressRecentApps();
+    public boolean pressRecentApps() {
+        try {
+            return mDevice.pressRecentApps();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     //Press volume up key
