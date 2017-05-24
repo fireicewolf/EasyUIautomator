@@ -3,6 +3,7 @@ package com.dukeg.easyuiautomator;
 import android.app.Instrumentation;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -269,6 +270,22 @@ public class SettingEvent {
             setMobileDataEnable.invoke(mTelephonyManager, false);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void airplaneModeON() {
+        if (Settings.Global.getString(context.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON).equals("0")) {
+            Settings.Global.putString(context.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON, "1");
+            Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+            context.sendBroadcast(intent);
+        }
+    }
+
+    public void airplaneModeOFF() {
+        if (Settings.Global.getString(context.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON).equals("1")) {
+            Settings.Global.putString(context.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON, "0");
+            Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+            context.sendBroadcast(intent);
         }
     }
 
