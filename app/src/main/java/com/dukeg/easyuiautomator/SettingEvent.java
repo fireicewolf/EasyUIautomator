@@ -148,9 +148,8 @@ public class SettingEvent {
             default:
                 break;
         }
-
-
     }
+
 
     /**
      * @param volumeType list 6 type volumes.
