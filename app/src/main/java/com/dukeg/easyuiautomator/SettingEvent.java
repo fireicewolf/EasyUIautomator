@@ -22,7 +22,8 @@ public class SettingEvent {
     private Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
     private Context context = instrumentation.getTargetContext().getApplicationContext();
 
-    private WifiManager mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+    private WifiManager mWifiManager = (WifiManager) context.getApplicationContext()
+            .getSystemService(Context.WIFI_SERVICE);
 
     private BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
@@ -275,7 +276,7 @@ public class SettingEvent {
     public void airplaneModeON() {
         if (Settings.Global.getString(context.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON).equals("0")) {
             Settings.Global.putString(context.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON, "1");
-            Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+            Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED).putExtra("state", true);
             context.sendBroadcast(intent);
         }
     }
@@ -283,7 +284,7 @@ public class SettingEvent {
     public void airplaneModeOFF() {
         if (Settings.Global.getString(context.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON).equals("1")) {
             Settings.Global.putString(context.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON, "0");
-            Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+            Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED).putExtra("state", false);
             context.sendBroadcast(intent);
         }
     }
