@@ -108,7 +108,7 @@ public class SettingEvent {
 
     private void getVolumeToast(String volumeType, int maxVolume) {
         Looper.prepare();
-        Toast getVolumeToast = Toast.makeText(context, volumeType + " max volume is :" + maxVolume,
+        Toast getVolumeToast = Toast.makeText(context, volumeType + "volume is :" + maxVolume,
                 Toast.LENGTH_LONG);
         getVolumeToast.show();
         Looper.loop();
@@ -119,32 +119,69 @@ public class SettingEvent {
             case alarm:
                 int alarm = 4;
                 int alarmMaxVolume = mAudioManager.getStreamMaxVolume(alarm);
-                getVolumeToast("Alarm", alarmMaxVolume);
+                getVolumeToast("Max alarm", alarmMaxVolume);
                 break;
             case media:
                 int media = 3;
                 int mediaMaxVolume = mAudioManager.getStreamMaxVolume(media);
-                getVolumeToast("Media", mediaMaxVolume);
+                getVolumeToast("Max media", mediaMaxVolume);
                 break;
             case notification:
                 int notification = 5;
                 int notificationMaxVolume = mAudioManager.getStreamMaxVolume(notification);
-                getVolumeToast("Notification", notificationMaxVolume);
+                getVolumeToast("Max notification", notificationMaxVolume);
                 break;
             case ringtone:
                 int ringtone = 2;
                 int ringtoneMaxVolume = mAudioManager.getStreamMaxVolume(ringtone);
-                getVolumeToast("Ringtone", ringtoneMaxVolume);
+                getVolumeToast("Max ringtone", ringtoneMaxVolume);
                 break;
             case system:
                 int system = 1;
                 int systemMaxVolume = mAudioManager.getStreamMaxVolume(system);
-                getVolumeToast("System", systemMaxVolume);
+                getVolumeToast("Max system", systemMaxVolume);
                 break;
             case call:
                 int call = 0;
                 int callMaxVolume = mAudioManager.getStreamMaxVolume(call);
-                getVolumeToast("Call", callMaxVolume);
+                getVolumeToast("Max call", callMaxVolume);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void getVolume(VolumeType volumeType) {
+        switch (volumeType) {
+            case alarm:
+                int alarm = 4;
+                int alarmVolume = mAudioManager.getStreamVolume(alarm);
+                getVolumeToast("Alarm", alarmVolume);
+                break;
+            case media:
+                int media = 3;
+                int mediaVolume = mAudioManager.getStreamVolume(media);
+                getVolumeToast("Media", mediaVolume);
+                break;
+            case notification:
+                int notification = 5;
+                int notificationVolume = mAudioManager.getStreamVolume(notification);
+                getVolumeToast("Notification", notificationVolume);
+                break;
+            case ringtone:
+                int ringtone = 2;
+                int ringtoneVolume = mAudioManager.getStreamVolume(ringtone);
+                getVolumeToast("Ringtone", ringtoneVolume);
+                break;
+            case system:
+                int system = 1;
+                int systemVolume = mAudioManager.getStreamVolume(system);
+                getVolumeToast("System", systemVolume);
+                break;
+            case call:
+                int call = 0;
+                int callVolume = mAudioManager.getStreamVolume(call);
+                getVolumeToast("Call", callVolume);
                 break;
             default:
                 break;

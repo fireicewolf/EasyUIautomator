@@ -5,13 +5,13 @@ android {
         release {
             keyAlias 'DukeG'
             keyPassword 'YQhk1123581321,.'
-            storeFile file('D:/AndroidStudioProjects/JohnYu.jks')
+            storeFile file('/home/john/Desktop/AndroidStudioProjects/JohnYu.jks')
             storePassword 'YQhk1123581321,.'
         }
         Debug {
             keyAlias 'DukeG'
             keyPassword 'YQhk1123581321,.'
-            storeFile file('D:/AndroidStudioProjects/JohnYu.jks')
+            storeFile file('/home/john/Desktop/AndroidStudioProjects/JohnYu.jks')
             storePassword 'YQhk1123581321,.'
         }
     }
@@ -39,13 +39,13 @@ android {
         debug {
             keyAlias 'DukeG'
             keyPassword 'YQhk1123581321,.'
-            storeFile file('D:/AndroidStudioProjects/JohnYu.jks')
+            storeFile file('/home/john/Desktop/AndroidStudioProjects/JohnYu.jks')
             storePassword 'YQhk1123581321,.'
         }
         release {
             keyAlias 'DukeG'
             keyPassword 'YQhk1123581321,.'
-            storeFile file('D:/AndroidStudioProjects/JohnYu.jks')
+            storeFile file('/home/john/Desktop/AndroidStudioProjects/JohnYu.jks')
             storePassword 'YQhk1123581321,.'
         }
     }

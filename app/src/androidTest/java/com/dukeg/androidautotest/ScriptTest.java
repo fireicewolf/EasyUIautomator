@@ -25,13 +25,9 @@ public class ScriptTest {
 
     @Test
     public void script() {
-        setting.airplaneModeON();
-        basic.wait(3000);
-        basic.takeScreenshot();
-        basic.wait(3000);
-        setting.airplaneModeOFF();
-        basic.wait(3000);
-        basic.takeScreenshot();
+//        setting.getMaxVolume(SettingEvent.VolumeType.media);
+//        basic.wait(3000);
+        setting.getVolume(SettingEvent.VolumeType.media);
         basic.wait(3000);
     }
 }
